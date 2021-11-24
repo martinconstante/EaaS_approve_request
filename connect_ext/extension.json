@@ -1,0 +1,20 @@
+{
+  "name": "martin01",
+  "description": "Extension of Martin Constante",
+  "version": "0.1.0",
+  "readme_url": "https://example.com/README.md",
+  "changelog_url": "https://example.com/CHANGELOG.md",
+  "capabilities": {
+    "asset_purchase_request_processing": [
+      "draft",
+      "tiers_setup",
+      "pending",
+      "inquiring",
+      "approved",
+      "failed",
+      "scheduled",
+      "revoking",
+      "revoked"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  martin01_dev:
+    container_name: martin01_dev
+    image: cloudblueconnect/connect-extension-runner:23.8
+    command: cextrun -d
+    volumes: 
+      - .:/extension
+    env_file:
+      - .martin01_dev.env
+
+  martin01_bash:
+    container_name: martin01_bash
+    image: cloudblueconnect/connect-extension-runner:23.8
+    working_dir: /extension
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/extension
+    env_file:
+      - .martin01_dev.env
+
+  martin01_test:
+    container_name: martin01_test
+    image: cloudblueconnect/connect-extension-runner:23.8
+    working_dir: /extension
+    command: /bin/bash -c "poetry install && pytest --verbose --cov=connect_ext --cov-report=html --cov-report=term-missing:skip-covered"
+    volumes:
+      - .:/extension
+    env_file:
+      - .martin01_dev.env
