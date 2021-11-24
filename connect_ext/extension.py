@@ -36,19 +36,17 @@ class Martin01Extension(Extension):
         self.logger.info(f"Status {request['status']}")
 
         if request['status'] == 'pending':
-            param_a = 'pepe'
-            param_b = 'toto'
             self.client.requests[request['id']].update(
                 {
                     "asset":{
                         "params":[
                             {
                                 "id": "param_a",
-                                "value": param_a
+                                "value": self.config['PARAM_A']
                             },
                             {
                                 "id": "param_b",
-                                "value": param_b
+                                "value": self.config['PARAM_B']
                             }                            
                         ]
                     }
